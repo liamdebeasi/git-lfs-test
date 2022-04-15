@@ -12,10 +12,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Create Git LFS file list
+        # This file will contain hashes of
+        # every Git LFS file we need.
+        # It will then be used to create
+        # another hash which will serve
+        # as the cache key.
         run: |
           git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
         shell: bash
-      - name: Read file list
-        run: |
-          more .lfs-assets-id
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: .git/lfs
+          # Increment the version suffix if you
+          # need to manually invalidate the cache.
+          key: ${{ runner.os }}-lfs-${{ hashFiles('./lfs-assets-id') }}-v1
+      - name: Pull Git LFS Files
+        run: git lfs pull
         shell: bash
