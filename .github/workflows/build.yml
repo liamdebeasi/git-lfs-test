@@ -11,9 +11,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: List Files
-        run: ls
+      - name: Create Git LFS file list
+        run: |
+          git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
         shell: bash
-      - name: Contents of image file
-        run: more button-diff-ios-ltr-chromium-darwin.png
+      - name: Read file list
+        run: |
+          more .lfs-assets-id
         shell: bash
