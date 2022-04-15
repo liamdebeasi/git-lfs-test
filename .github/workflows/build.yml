@@ -28,7 +28,7 @@ jobs:
           # need to manually invalidate the cache.
           key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}-v1
       - name: Pull Git LFS Files
-        run: git lfs pull
+        run: GIT_TRACE=1 git lfs pull
         shell: bash
       - name: Show files
         run: cd .git/lfs && ls && cd incomplete && ls && cd ../objects && ls
