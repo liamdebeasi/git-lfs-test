@@ -31,5 +31,5 @@ jobs:
         run: git lfs pull
         shell: bash
       - name: Show files
-        run: cd .git/lfs && ls
+        run: cd .git/lfs && ls && cd incomplete && ls && cd ../objects && ls
         shell: bash
