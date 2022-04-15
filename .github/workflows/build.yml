@@ -26,7 +26,10 @@ jobs:
           path: .git/lfs
           # Increment the version suffix if you
           # need to manually invalidate the cache.
-          key: ${{ runner.os }}-lfs-${{ hashFiles('./lfs-assets-id') }}-v1
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}-v1
       - name: Pull Git LFS Files
         run: git lfs pull
+        shell: bash
+      - name: Show files
+        run: cd .git/lfs && ls
         shell: bash
