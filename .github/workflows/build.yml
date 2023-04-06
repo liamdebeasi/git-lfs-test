@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - branch-off-main
 
 jobs:
   test:
@@ -24,8 +25,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .git/lfs
-          # Increment the version suffix if you
-          # need to manually invalidate the cache.
+          # 
+          eed to manually invalidate the cache.
           key: v1-${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
           restore-keys: v1-${{ runner.os }}-lfs-
       - name: LS after cache
