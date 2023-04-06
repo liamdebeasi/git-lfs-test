@@ -37,3 +37,6 @@ jobs:
       - name: LS after Git LFS pull
         run: ls
         shell: bash
+      - name: Prune Old Files
+        run: git lfs prune
+        shell: bash
