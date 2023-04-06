@@ -27,6 +27,7 @@ jobs:
           # Increment the version suffix if you
           # need to manually invalidate the cache.
           key: v1-${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+          restore-keys: v1-${{ runner.os }}-lfs-
       - name: Pull Git LFS Files
         run: GIT_TRACE=1 git lfs pull
         shell: bash
