@@ -25,8 +25,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .git/lfs
-          # 
-          eed to manually invalidate the cache.
+          # Increment the version suffix if you
+          # need to manually invalidate the cache.
           key: v1-${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
           restore-keys: v1-${{ runner.os }}-lfs-
       - name: LS after cache
